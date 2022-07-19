@@ -3962,7 +3962,7 @@ class Booster:
             self.__inner_predict_buffer[data_idx] = np.empty(n_preds, dtype=np.float64)
         # avoid to predict many time in one iteration
         if not self.__is_predicted_cur_iter[data_idx]:
-            tmp_out_len = ctypes.c_int64(0)
+            tmp_out_len = ctypes.c_float(0)
             data_ptr = self.__inner_predict_buffer[data_idx].ctypes.data_as(ctypes.POINTER(ctypes.c_double))
             _safe_call(_LIB.LGBM_BoosterGetPredict(
                 self.handle,
